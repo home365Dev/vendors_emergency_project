@@ -12,12 +12,15 @@ def run(df:pd.DataFrame):
     return df
 
 def _is_emeregency(lemmas):
-    previous_term = ''
-    previous_term_2 = ''
-    previous_term_3 = ''
+    lem_split = lemmas.split(' ')
     for term in emergency_terms:
         if term in lemmas:
-            return term
+            if lem_split[lem_split.index(term) - 1] not in negative_terms and lem_split[lem_split.index(term) - 2] not in negative_terms:
+                return term
+    for term in special_terms:
+        if term in lemmas:
+            if lem_split[lem_split.index(term) - 1] in negative_terms or lem_split[lem_split.index(term) - 2] in negative_terms or lem_split[lem_split.index(term) - 3] in negative_terms:
+                return 'no '+term
 
     return False
 
