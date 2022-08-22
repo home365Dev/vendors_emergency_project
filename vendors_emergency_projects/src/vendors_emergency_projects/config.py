@@ -1,0 +1,16 @@
+INPUT_PATH = 'input/data.csv'
+OUTPUT_PATH = 'output/output_data.csv'
+TEXT_TITLE = 'text'
+CLEAN_TITLE = 'clean_value'
+TFIDF_TITLE = 'tfidf_value'
+TFIDF_SCORE = 'tfidf_score'
+FIXED_TITLE = 'fixed_value'
+EMERGENCY = 'emergency'
+FEATURES = 'features'
+TRAIN_MODEL = True
+TAGGED_DATA = 'Category'
+# BEST_MATCH = 'best_match'
+MAX_CHARS = 50
+NUM_OF_RAWS = 500
+MATCH_SCORE_THRESHOLD = 70
+
