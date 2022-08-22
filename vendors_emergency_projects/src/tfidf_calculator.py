@@ -3,10 +3,7 @@
 import gensim
 import config
 
-from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
-from sklearn.preprocessing import OneHotEncoder
-from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
+from sklearn.feature_extraction.text import CountVectorizer
 
 import emergency_checker
 
