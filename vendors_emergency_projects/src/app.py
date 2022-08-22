@@ -1,7 +1,7 @@
 import logging
 
 import json
-
+import pandas as pd
 from emergency_checker import run
 LOGGER = logging.getLogger(__name__)
 def execute(data: dict):
@@ -10,7 +10,7 @@ def execute(data: dict):
     logger.setLevel(logging.DEBUG)
     logger.info('event parameter: {}'.format(data))
     # print("Received event: " + json.dumps(event, indent=2))
-    body = data
+    body = pd.DataFrame.from_dict(data)
     print("Received body:  " + str(body))
     try:
         return run(body)
