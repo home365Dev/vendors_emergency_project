@@ -1,9 +1,9 @@
 import pandas as pd
 import config
 
-emergency_terms = ['urgent', 'crisis', 'danger', 'disaster', 'necessity', 'catastrophe', 'catastrof', 'katastrof', 'critical', 'mergnc', 'mergenc', 'emergency', 'immediately', 'flood', 'tornado', 'hurricane', 'tsunami', 'landslide', 'earthquake', 'fire', 'asap', 'ambulance', '911', 'rescue', 'burn', 'bleed', 'choke', 'attack', 'poison', 'robbery', 'vandalism', 'alert', 'explosion', 'bomb', 'shot', 'accident', 'leak']
-special_terms = ['water', 'heat']
-negative_terms = ['not', 'no', 'doesnt']
+emergency_terms = ['urgent', 'crisis', 'danger', 'disaster', 'necessity', 'catastrophe', 'catastrof', 'katastrof', 'critical', 'mergnc', 'mergenc', 'emergency', 'immediately', 'flood', 'tornado', 'hurricane', 'tsunami', 'landslide', 'earthquake', 'fire', 'asap', 'ambulance', '911', 'rescue', 'burn', 'bleed', 'choke', 'attack', 'poison', 'robbery', 'vandalism', 'alert', 'explosion', 'bomb', 'shot', 'leak', 'leaking', 'overflow', 'overflowed', 'poop', 'shit', 'piss', ]
+special_terms = ['water', 'heat', 'hot', 'hat', 'het', 'hvac']
+negative_terms = ['not', 'no', 'doesnt', 'nt']
 ## police is no good, since it is converted from the spoken word of "please"
 
 def run(df:pd.DataFrame):
@@ -14,12 +14,18 @@ def run(df:pd.DataFrame):
 def _is_emeregency(lemmas):
     lem_split = lemmas.split(' ')
     for term in emergency_terms:
-        if term in lemmas:
-            if lem_split[lem_split.index(term) - 1] not in negative_terms and lem_split[lem_split.index(term) - 2] not in negative_terms:
+        if term in lem_split:
+            if (lem_split.index(term) - 1 >=0 and lem_split[lem_split.index(term) - 1] not in negative_terms) and \
+                    (lem_split.index(term) - 2 >=0 and lem_split[lem_split.index(term) - 2] not in negative_terms):
                 return term
     for term in special_terms:
-        if term in lemmas:
-            if lem_split[lem_split.index(term) - 1] in negative_terms or lem_split[lem_split.index(term) - 2] in negative_terms or lem_split[lem_split.index(term) - 3] in negative_terms:
+        if term in lem_split:
+            if (lem_split.index(term) - 1 >=0 and lem_split[lem_split.index(term) - 1] in negative_terms) or \
+                    (lem_split.index(term) - 2 >= 0 and lem_split[lem_split.index(term) - 2] in negative_terms) or \
+                    (lem_split.index(term) - 3 >= 0 and lem_split[lem_split.index(term) - 3] in negative_terms):
+                return 'no '+term
+            if (lem_split.index(term) + 1 < len(lem_split) and lem_split[lem_split.index(term) + 1] in negative_terms) or \
+                    (lem_split.index(term) + 2 < len(lem_split) and lem_split[lem_split.index(term) + 2] in negative_terms):
                 return 'no '+term
 
     return False
@@ -30,4 +36,5 @@ if __name__ == '__main__':
     example_str = "all right , I m probably gon na regret order point , master bathroom , uh sort valve continually run water toilet bowl . I try I include go Home Depot try replacement um sort flush mechanism like I use . I figure constant run . so end water drain tank fill night long . its drive crazy . not urgent , certainly go , drain trigger refill . um not good house sort chronically run toilet . tub bathroom toilet bathtub machine"
     data = pd.DataFrame({"clean_value": [example_str]})
     df = df.append(data)
-    run(df)
+    a = run(df)
+    print(a)

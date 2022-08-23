@@ -1,0 +1,5 @@
+pandas~=1.4.3
+fastapi~=0.79.1
+spacy~=3.0.8
+gensim~=4.2.0
+nltk~=3.7
