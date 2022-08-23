@@ -1,10 +1,7 @@
 import pandas as pd
 
 import cleaner
-# import matcher
 import config
-# import features
-# import trainer
 import emergency_checker
 
 
@@ -44,7 +41,6 @@ def run_flow():
 
     # if config.TRAIN_MODEL:
     #     raw_df = trainer.run(raw_df)
-
 
     # result_df = matcher.run(raw_df)
 
