@@ -7,11 +7,11 @@ on:
 env:
   AWS_REGION: us-east-1             
   ECR_REPOSITORY: vendors_emergency_projects           
-  ECS_SERVICE: vendors_emergency_projects               
+  ECS_SERVICE: vendors_emer               
   ECS_CLUSTER: functional-micro-services
   ECS_TASK_DEFINITION:  deployment/task_def.json 
 
-  CONTAINER_NAME: vendors_emergency_projects  
+  CONTAINER_NAME: vendors_emer  
 
 permissions:
   id-token: write
