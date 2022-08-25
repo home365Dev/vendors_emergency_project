@@ -6,7 +6,7 @@ on:
 
 env:
   AWS_REGION: us-east-1             
-  ECR_REPOSITORY: vendors_emergency_projects           
+  ECR_REPOSITORY: vendors_emergency_project          
   ECS_SERVICE: vendors_emer               
   ECS_CLUSTER: functional-micro-services
   ECS_TASK_DEFINITION:  deployment/task_def.json 
