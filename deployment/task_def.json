@@ -9,7 +9,7 @@
                 "logDriver": "awslogs",
                 "secretOptions": null,
                 "options": {
-                    "awslogs-group": "/ecs/ vendors-emer",
+                    "awslogs-group": "/ecs/vendors-emer",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
                 }
@@ -37,7 +37,7 @@
             "memoryReservation": null,
             "volumesFrom": [],
             "stopTimeout": null,
-            "image": "090922436798.dkr.ecr.us-east-1.amazonaws.com/ vendors-emer",
+            "image": "090922436798.dkr.ecr.us-east-1.amazonaws.com/vendors-emer",
             "startTimeout": null,
             "firelensConfiguration": null,
             "dependsOn": null,
@@ -47,7 +47,7 @@
                 "retries": 3,
                 "command": [
                     "CMD-SHELL",
-                    "curl -f http://localhost/ vendors-emer/healthcheck || exit 1"
+                    "curl -f http://localhost/vendors-emer/healthcheck || exit 1"
                 ],
                 "timeout": 10,
                 "interval": 60,
@@ -63,7 +63,7 @@
             "dockerLabels": null,
             "systemControls": null,
             "privileged": null,
-            "name": " vendors-emer"
+            "name": "vendors-emer"
         }
     ],
     "placementConstraints": [],
@@ -73,8 +73,8 @@
         "EC2",
         "FARGATE"
     ],
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:090922436798:task-definition/ vendors-emer:1",
-    "family": " vendors-emer",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:090922436798:task-definition/vendors-emer:1",
+    "family": "vendors-emer",
     "requiresAttributes": [
         {
             "targetId": null,
