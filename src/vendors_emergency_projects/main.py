@@ -2,7 +2,7 @@ import logging
 
 from fastapi import Request, FastAPI, APIRouter
 
-from vendors_emergency_projects.src.app import execute
+from src.vendors_emergency_projects.app import execute
 
 logger = logging.getLogger(__name__)
 logging.basicConfig()

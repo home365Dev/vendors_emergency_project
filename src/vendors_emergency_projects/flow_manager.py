@@ -2,7 +2,7 @@ import pandas as pd
 
 import cleaner
 import config
-import emergency_checker
+import src.vendors_emergency_projects.emergency_checker
 
 
 def _read_data(input_path):

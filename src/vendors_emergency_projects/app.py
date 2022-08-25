@@ -2,7 +2,7 @@ import logging
 
 import json
 import pandas as pd
-from emergency_checker import run
+from src.vendors_emergency_projects.emergency_checker import run
 LOGGER = logging.getLogger(__name__)
 def execute(data: dict):
     LOGGER.info("Hello World")

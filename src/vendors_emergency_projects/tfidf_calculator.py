@@ -5,7 +5,7 @@ import config
 
 from sklearn.feature_extraction.text import CountVectorizer
 
-import emergency_checker
+import src.vendors_emergency_projects.emergency_checker
 
 
 def _sort(tfidf_tuples):
