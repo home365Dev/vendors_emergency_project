@@ -11,7 +11,7 @@ env:
   ECS_CLUSTER: functional-micro-services
   ECS_TASK_DEFINITION:  deployment/task_def.json 
 
-  CONTAINER_NAME: vendors_emer  
+  CONTAINER_NAME: vendors-emer  
 
 permissions:
   id-token: write
