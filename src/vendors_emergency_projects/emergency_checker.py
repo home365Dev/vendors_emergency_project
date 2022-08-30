@@ -11,6 +11,8 @@ two_words_term_2 = ['possible']
 ## police is no good, since it is converted from the spoken word of "please"
 
 def run(df:pd.DataFrame):
+    print("***************")
+    print(str(df))
     # df[config.EMERGENCY] = df[config.TFIDF_TITLE].apply(lambda str: _is_emeregency(str))
     df[config.EMERGENCY] = df[config.CLEAN_TITLE].apply(lambda str: _is_emeregency(str))
     return df
