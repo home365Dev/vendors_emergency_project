@@ -2,7 +2,6 @@ import pandas as pd
 
 import src.vendors_emergency_projects.cleaner as cleaner
 import src.vendors_emergency_projects.config as config
-import src.vendors_emergency_projects.emergency_checker
 
 
 def _read_data(input_path):
