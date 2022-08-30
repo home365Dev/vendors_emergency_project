@@ -21,7 +21,7 @@ app = FastAPI(
 def healthcheck():
     return {"status": "ok"}
 
-@app.post("/vendors_emergency_projects")
+@router.post("/vendors_emergency_projects")
 async def vendors_emergency_projects(request: Request):
     print("00000")
     body = await request.json()
