@@ -1,5 +1,6 @@
 import pandas as pd
-import src.vendors_emergency_projects.config
+import src.vendors_emergency_projects.config as config
+
 
 emergency_terms = ['urgent', 'crisis', 'danger', 'disaster', 'necessity', 'catastrophe', 'catastrof', 'katastrof', 'critical', 'mergnc', 'mergenc', 'emergency', 'immediately', 'flood', 'tornado', 'hurricane', 'tsunami', 'landslide', 'earthquake', 'asap', 'ambulance', '911', 'rescue', 'burn', 'bleed', 'choke', 'attack', 'robbery', 'vandalism', 'explosion', 'leak']
 required_neg_special_terms = ['water', 'heat']
@@ -33,7 +34,7 @@ def _is_emeregency(lemmas):
     for term1 in two_words_term_1:
         if term1 in lem_split:
             if lem_split.index(term1) + 1 < len(lem_split) and lem_split[lem_split.index(term1)+ 1] in two_words_term_2:
-                return term1 + ' ' + lem_split[lem_split.index(term1)+ 1]
+                return term1 + ' ' + lem_split[lem_split.index(term1) + 1]
 
     return False
 
