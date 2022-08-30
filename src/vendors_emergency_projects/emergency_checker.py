@@ -16,6 +16,7 @@ def run(df:pd.DataFrame):
     return df
 
 def _is_emeregency(lemmas):
+    print(lemmas)
     lem_split = lemmas.split(' ')
     for term in emergency_terms:
         if term in lem_split:

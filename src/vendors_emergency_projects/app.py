@@ -3,6 +3,7 @@ import logging
 import json
 import pandas as pd
 from src.vendors_emergency_projects.emergency_checker import run
+import src.vendors_emergency_projects.config as config
 LOGGER = logging.getLogger(__name__)
 
 def execute(data: dict):
@@ -13,13 +14,12 @@ def execute(data: dict):
     # print("Received event: " + json.dumps(event, indent=2))
     my_json_str = json.dumps(data)
     logger.info('event parameter: {}'.format(my_json_str))
-    print("Received body:  " + str(my_json_str))
 
-    body = data['text']
-    rowdf = pd.DataFrame({'Object Key': ['1'], 'Category': ['Rami'], 'file_path': ['rami'], 'text': [body], 'object': ['000']})
-    print("Received body:  " + str(body))
+    input_str = data['text']
+    row_df = pd.DataFrame(columns=[config.TEXT_TITLE, config.CLEAN_TITLE, config.FIXED_TITLE, config.EMERGENCY])
+    row_df.append({config.CLEAN_TITLE: input_str}, ignore_index=True)
     try:
-        return run(rowdf)
+        return run(row_df)
     except Exception as e:
         logger.error(e)
         print(json.dumps({'error': str(e)}))
