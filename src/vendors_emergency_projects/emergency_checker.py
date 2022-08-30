@@ -1,10 +1,10 @@
 import pandas as pd
 import src.vendors_emergency_projects.config as config
 
+emergency_terms = ['urgent', 'crisis', 'danger', 'disaster', 'necessity', 'catastrophe', 'catastrof', 'katastrof', 'critical', 'mergnc', 'mergenc', 'emergency', 'immediately', 'flood', 'tornado', 'hurricane', 'tsunami', 'landslide', 'earthquake', 'asap', 'ambulance', '911', 'rescue', 'burn', 'bleed', 'choke', 'attack', 'robbery', 'vandalism', 'explosion', 'bomb', 'leak', 'leaking', 'overflow', 'overflowed', 'poop', 'shit', 'piss']
+required_neg_special_terms = ['water', 'heat', 'hot', 'hat', 'het', 'hvac']
+negative_terms = ['not', 'no', 'doesnt', 'nt']
 
-emergency_terms = ['urgent', 'crisis', 'danger', 'disaster', 'necessity', 'catastrophe', 'catastrof', 'katastrof', 'critical', 'mergnc', 'mergenc', 'emergency', 'immediately', 'flood', 'tornado', 'hurricane', 'tsunami', 'landslide', 'earthquake', 'asap', 'ambulance', '911', 'rescue', 'burn', 'bleed', 'choke', 'attack', 'robbery', 'vandalism', 'explosion', 'leak']
-required_neg_special_terms = ['water', 'heat']
-negative_terms = ['not', 'no', 'doesnt']
 two_words_term_1 = ['soon']
 two_words_term_2 = ['possible']
 

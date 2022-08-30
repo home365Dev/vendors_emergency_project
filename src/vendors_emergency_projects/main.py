@@ -23,6 +23,7 @@ def healthcheck():
 
 @app.post("/vendors_emergency_projects")
 async def vendors_emergency_projects(request: Request):
+    print("00000")
     body = await request.json()
     print("11111111111111111111111")
     print(body)
