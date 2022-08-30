@@ -11,7 +11,11 @@ def execute(data: dict):
     logger.setLevel(logging.DEBUG)
     logger.info('event parameter: {}'.format(data))
     # print("Received event: " + json.dumps(event, indent=2))
-    body = data['body']
+    my_json_str = json.dumps(data)
+    logger.info('event parameter: {}'.format(my_json_str))
+    print("Received body:  " + str(my_json_str))
+
+    body = data['text']
     rowdf = pd.DataFrame({'Object Key': ['1'], 'Category': ['Rami'], 'file_path': ['rami'], 'text': [body], 'object': ['000']})
     print("Received body:  " + str(body))
     try:
