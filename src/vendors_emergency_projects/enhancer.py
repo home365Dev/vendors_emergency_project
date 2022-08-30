@@ -1,4 +1,4 @@
-import config
+import src.vendors_emergency_projects.config as config
 import pandas as pd
 import tfidf_calculator
 import nltk
