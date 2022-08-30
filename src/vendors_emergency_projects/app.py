@@ -19,6 +19,7 @@ def execute(data: dict):
     row_df = pd.DataFrame(columns=[config.TEXT_TITLE, config.CLEAN_TITLE, config.FIXED_TITLE, config.EMERGENCY])
     row_df.append({config.CLEAN_TITLE: input_str}, ignore_index=True)
     try:
+        print("2222222222222222222")
         return run(row_df)
     except Exception as e:
         logger.error(e)
