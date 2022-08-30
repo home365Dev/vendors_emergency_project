@@ -4,6 +4,8 @@ from fastapi import Request, FastAPI, APIRouter
 
 from src.vendors_emergency_projects.app import execute
 
+import json
+
 logger = logging.getLogger(__name__)
 logging.basicConfig()
 
@@ -22,7 +24,11 @@ def healthcheck():
 @app.post("/vendors_emergency_projects")
 async def vendors_emergency_projects(request: Request):
     body = await request.json()
-    return execute(body)
+    result = {
+        'statusCode': 200,
+        'body': json.dumps({'result': execute(body)})
+    }
+    return result
     
 app.include_router(router, prefix="/vendors_emergency_projects")
 
