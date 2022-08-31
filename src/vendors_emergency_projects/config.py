@@ -1,7 +1,6 @@
 INPUT_PATH = 'input/data.csv'
 OUTPUT_PATH = 'output/output_data.csv'
-TEXT_TITLE = 'text'
-CLEAN_TITLE = 'clean_value'
+TEXT = 'text'
 TFIDF_TITLE = 'tfidf_value'
 TFIDF_SCORE = 'tfidf_score'
 FIXED_TITLE = 'fixed_value'

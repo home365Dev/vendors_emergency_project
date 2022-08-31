@@ -14,7 +14,7 @@ def run(df:pd.DataFrame):
     print("***************")
     print(str(df))
     # df[config.EMERGENCY] = df[config.TFIDF_TITLE].apply(lambda str: _is_emeregency(str))
-    df[config.EMERGENCY] = df[config.CLEAN_TITLE].apply(lambda str: _is_emeregency(str))
+    df[config.EMERGENCY] = df[config.TEXT].apply(lambda str: _is_emeregency(str))
     return df
 
 def _is_emeregency(lemmas):
@@ -43,7 +43,7 @@ def _is_emeregency(lemmas):
 
 
 if __name__ == '__main__':
-    df = pd.DataFrame(columns=[config.CLEAN_TITLE])
+    df = pd.DataFrame(columns=[config.TEXT])
     example_str = "all right , I m probably gon na regret order point , soon possible master bathroom , uh sort valve continually run water toilet bowl . I try I include go Home Depot try replacement um sort flush mechanism like I use . I figure constant run . so end water drain tank fill night long . its drive crazy . not urgent , certainly go , drain trigger refill . um not good house sort chronically run toilet . tub bathroom toilet bathtub machine"
     data = pd.DataFrame({"clean_value": [example_str]})
     df = df.append(data)
