@@ -1,4 +1,4 @@
-import watchtower
+# import watchtower
 from logging import *
 import src.vendors_emergency_projects.config as config
 
@@ -9,7 +9,7 @@ basicConfig(
 
 logger = getLogger(__name__)
 # logger.addHandler(StreamHandler(stream=sys.stdout))
-if not config.IS_TEST:
-    logger.addHandler(watchtower.CloudWatchLogHandler())
+# if not config.IS_TEST:
+#     logger.addHandler(watchtower.CloudWatchLogHandler())
 logger.setLevel(config.LOG_LEVEL)
 logger.info("Log has started")
