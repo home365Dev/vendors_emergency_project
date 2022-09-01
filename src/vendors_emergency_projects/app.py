@@ -4,6 +4,7 @@ import json
 import pandas as pd
 from src.vendors_emergency_projects.emergency_checker import run
 import src.vendors_emergency_projects.config as config
+
 LOGGER = logging.getLogger(__name__)
 
 def execute(data: dict):
@@ -25,8 +26,8 @@ def execute(data: dict):
         result_json = json.dumps(result_to_dict_ext, indent=3)
         return result_json
     except Exception as e:
-        logger.error(e)
-        print(json.dumps({'error': str(e)}))
+        # logger.error(e)
+        logger.error(json.dumps({'error': str(e)}))
         return {
             'statusCode': 500,
             'body': json.dumps({'error': str(e)})

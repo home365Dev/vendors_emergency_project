@@ -2,6 +2,8 @@ import pandas as pd
 
 import src.vendors_emergency_projects.cleaner as cleaner
 import src.vendors_emergency_projects.config as config
+import src.vendors_emergency_projects.emergency_checker as emergency_checker
+from src.vendors_emergency_projects.logger import logger
 
 
 def _read_data(input_path):
@@ -14,7 +16,7 @@ def _read_data(input_path):
     orig_df['objects'] = orig_df['objects'].apply(lambda x: '' if pd.isna(x) else ' ' + x.replace(',','').lower())
     orig_df['text'] = orig_df['text'] + orig_df['objects']
 
-    print("categories check: " + str(orig_df.category.value_counts()))
+    logger.info("categories check: " + str(orig_df.category.value_counts()))
     return orig_df
 
 def run_flow():
@@ -25,17 +27,17 @@ def run_flow():
         raise Exception("Input data is empty")
 
     ## clean the data
-    print("cleaner")
+    logger.info("cleaner")
     raw_df = cleaner.preprocess(raw_df)
 
     # ## prepare the data before running over it - No need for now!
-    # print("enhancer")
+    # logger.info("enhancer")
     # raw_df = enhancer.enhance(raw_df)
 
     ## check emergency terms
     # raw_df = features.run(raw_df)
 
-    print ("emergency checker")
+    logger.info ("emergency checker")
     raw_df = emergency_checker.run(raw_df)
 
     # if config.TRAIN_MODEL:
@@ -47,7 +49,7 @@ def run_flow():
     # print("found matches:")
     # for index, row in result_df.iterrows():
     #     if row[amazon_vars.BEST_MATCH]:
-    #         printt(row[amazon_vars.TEXT_TITLE], " ---> ", row[amazon_vars.BEST_MATCH])
+    #         print(row[amazon_vars.TEXT_TITLE], " ---> ", row[amazon_vars.BEST_MATCH])
 
     ## output results:
     # output_df = result_df[[config.TEXT_TITLE, config.BEST_MATCH]]

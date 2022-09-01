@@ -1,3 +1,6 @@
+import logging
+import os
+
 INPUT_PATH = 'input/data.csv'
 OUTPUT_PATH = 'output/output_data.csv'
 TEXT = 'text'
@@ -12,4 +15,7 @@ TAGGED_DATA = 'Category'
 MAX_CHARS = 50
 NUM_OF_RAWS = 500
 MATCH_SCORE_THRESHOLD = 70
+
+LOG_LEVEL = logging.DEBUG
+IS_TEST = os.environ.get("IS_TEST", "False").lower() == "true"
 
