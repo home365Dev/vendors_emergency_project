@@ -16,6 +16,5 @@ MAX_CHARS = 50
 NUM_OF_RAWS = 500
 MATCH_SCORE_THRESHOLD = 70
 
-LOG_LEVEL = logging.DEBUG
 IS_TEST = os.environ.get("IS_TEST", "False").lower() == "true"
 
