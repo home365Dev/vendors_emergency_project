@@ -17,14 +17,17 @@ def execute(data: dict):
     logger.info('event parameter: {}'.format(my_json_str))
 
     input_str = data['text']
-    row_df = pd.DataFrame(columns=[config.TEXT, config.FIXED_TITLE, config.EMERGENCY])
+    row_df = pd.DataFrame(columns=[config.TEXT, config.EMERGENCY])
     row_df = row_df.append({config.TEXT: input_str}, ignore_index=True)
     try:
         result_df = run(row_df)
-        result_json_struct = json.loads(result_df.to_json(orient="records"))
-        result_to_dict_ext = {"1": result_json_struct}
-        result_json = json.dumps(result_to_dict_ext, indent=3)
-        return result_json
+        result_to_dict = result_df.to_dict(orient='records')
+        result_to_dict_ext = {"1": result_to_dict}
+
+        # result_json_struct = json.loads(result_df.to_json(orient="records"))
+        # result_to_dict_ext = {"1": result_json_struct}
+        # result_json = json.dumps(result_to_dict_ext, indent=3)
+        return result_to_dict_ext
     except Exception as e:
         # logger.error(e)
         logger.error(json.dumps({'error': str(e)}))
@@ -35,4 +38,5 @@ def execute(data: dict):
 
 if __name__ == '__main__':
     jst = { "text": "all right , I m probably gon na regret order point , soon possible master bathroom , uh sort valve continually run water toilet bowl . I try I include go Home Depot try replacement um sort flush mechanism like I use . I figure constant run . so end water drain tank fill night long . its drive crazy . not urgent , certainly go , drain trigger refill . um not good house sort chronically run toilet . tub bathroom toilet bathtub machine"}
-    print(execute(jst))
+    result = execute(jst)
+    print(result)
