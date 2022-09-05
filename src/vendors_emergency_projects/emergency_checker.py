@@ -14,7 +14,8 @@ two_words_term_2 = ['possible']
 def run(df:pd.DataFrame):
     ## clean the data
     logger.info("cleaner")
-    df = cleaner.preprocess(df)
+    # df = cleaner.preprocess(df)
+    df[config.TEXT_CLEAN] = df[config.TEXT]
     df[config.IS_EMERGENCY] = "False"
     # df[config.EMERGENCY] = df[config.TFIDF_TITLE].apply(lambda str: _is_emeregency(str))
     df[config.EMERGENCY] = df[config.TEXT_CLEAN].apply(lambda str: _is_emeregency(str))
