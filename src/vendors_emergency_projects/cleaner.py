@@ -7,8 +7,8 @@ from gensim.parsing.preprocessing import remove_stopwords
 
 nlp = spacy.load("en_core_web_sm")
 
-text_title = config.TEXT_TITLE
-text_clean = config.TEXT
+text_title = config.TEXT
+text_clean = config.TEXT_CLEAN
 
 ## remove stopwords using preprocessing package
 def _remove_stop_words(text):

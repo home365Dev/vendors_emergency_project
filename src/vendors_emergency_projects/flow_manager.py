@@ -21,14 +21,12 @@ def _read_data(input_path):
 
 def run_flow():
     input_path = config.INPUT_PATH
-    raw_df = _read_data(input_path)
+    raw_df = _read_data(input_path)[:1]
 
     if raw_df.empty:
         raise Exception("Input data is empty")
 
-    ## clean the data
-    logger.info("cleaner")
-    raw_df = cleaner.preprocess(raw_df)
+
 
     # ## prepare the data before running over it - No need for now!
     # logger.info("enhancer")

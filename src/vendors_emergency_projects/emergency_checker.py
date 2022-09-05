@@ -1,7 +1,7 @@
 import pandas as pd
 import src.vendors_emergency_projects.config as config
 from src.vendors_emergency_projects.logger import logger
-
+import src.vendors_emergency_projects.cleaner as cleaner
 emergency_terms = ['urgent', 'crisis', 'danger', 'disaster', 'necessity', 'catastrophe', 'catastrof', 'katastrof', 'critical', 'mergnc', 'mergenc', 'emergency', 'immediately', 'flood', 'tornado', 'hurricane', 'tsunami', 'landslide', 'earthquake', 'asap', 'ambulance', '911', 'rescue', 'burn', 'bleed', 'choke', 'attack', 'robbery', 'vandalism', 'explosion', 'bomb', 'leak', 'leaking', 'overflow', 'overflowed', 'poop', 'shit', 'piss']
 required_neg_special_terms = ['water', 'heat', 'hot', 'hat', 'het', 'hvac']
 negative_terms = ['not', 'no', 'doesnt', 'nt']
@@ -12,14 +12,17 @@ two_words_term_2 = ['possible']
 ## police is no good, since it is converted from the spoken word of "please"
 
 def run(df:pd.DataFrame):
+    ## clean the data
+    logger.info("cleaner")
+    df = cleaner.preprocess(df)
+    df[config.IS_EMERGENCY] = False
     # df[config.EMERGENCY] = df[config.TFIDF_TITLE].apply(lambda str: _is_emeregency(str))
-    df[config.EMERGENCY] = df[config.TEXT].apply(lambda str: _is_emeregency(str))
-    df.loc[df[config.EMERGENCY] is not False, config.IS_EMERGENCY] = True
-    df.loc[df[config.EMERGENCY] is False, config.IS_EMERGENCY] = False
+    df[config.EMERGENCY] = df[config.TEXT_CLEAN].apply(lambda str: _is_emeregency(str))
+    df.loc[df[config.EMERGENCY] != False, config.IS_EMERGENCY] = True
     return df
 
 def _is_emeregency(lemmas):
-    logger.debug("running over: " + str(lemmas))
+    logger.debug("running over: " + lemmas)
 
     lem_split = lemmas.split(' ')
     for term in emergency_terms:
