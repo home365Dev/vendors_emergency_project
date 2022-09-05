@@ -25,14 +25,8 @@ def execute(data: dict):
             config.EMERGENCY: result_df[config.EMERGENCY][0],
             config.IS_EMERGENCY: result_df[config.IS_EMERGENCY][0]
         }
-        # result_to_dict = result_df.to_dict(orient='records')
-        # result_to_dict_ext = {"1": result_to_dict}
-        # result_json_struct = json.loads(result_df.to_json(orient="records"))
-        # result_to_dict_ext = {"1": result_json_struct}
-        # result_json = json.dumps(result_to_dict_ext, indent=3)
         return result_to_dict
     except Exception as e:
-        # logger.error(e)
         logger.error(json.dumps({'error': str(e)}))
         return {
             'statusCode': 500,

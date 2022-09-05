@@ -26,7 +26,7 @@ async def vendors_emergency_projects(request: Request):
     body = await request.json()
     result = {
         'statusCode': 200,
-        'body': json.dumps({'result': execute(body)})
+        'body': execute(body)
     }
     return result
     
