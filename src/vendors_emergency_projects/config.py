@@ -1,6 +1,6 @@
 import logging
 import os
-
+IS_EMERGENCY = 'is_emergency'
 INPUT_PATH = 'input/data.csv'
 OUTPUT_PATH = 'output/output_data.csv'
 TEXT = 'text'

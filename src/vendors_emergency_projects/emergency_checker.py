@@ -14,6 +14,8 @@ two_words_term_2 = ['possible']
 def run(df:pd.DataFrame):
     # df[config.EMERGENCY] = df[config.TFIDF_TITLE].apply(lambda str: _is_emeregency(str))
     df[config.EMERGENCY] = df[config.TEXT].apply(lambda str: _is_emeregency(str))
+    df.loc[df[config.EMERGENCY] is not False, config.IS_EMERGENCY] = True
+    df.loc[df[config.EMERGENCY] is False, config.IS_EMERGENCY] = False
     return df
 
 def _is_emeregency(lemmas):
