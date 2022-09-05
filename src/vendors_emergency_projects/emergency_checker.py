@@ -15,10 +15,10 @@ def run(df:pd.DataFrame):
     ## clean the data
     logger.info("cleaner")
     df = cleaner.preprocess(df)
-    df[config.IS_EMERGENCY] = False
+    df[config.IS_EMERGENCY] = "False"
     # df[config.EMERGENCY] = df[config.TFIDF_TITLE].apply(lambda str: _is_emeregency(str))
     df[config.EMERGENCY] = df[config.TEXT_CLEAN].apply(lambda str: _is_emeregency(str))
-    df.loc[df[config.EMERGENCY] != False, config.IS_EMERGENCY] = True
+    df.loc[df[config.EMERGENCY] != "False", config.IS_EMERGENCY] = "True"
     return df
 
 def _is_emeregency(lemmas):
@@ -49,7 +49,7 @@ def _is_emeregency(lemmas):
                 logger.debug("result: " + str(res))
                 return res
 
-    return False
+    return "False"
 
 
 if __name__ == '__main__':
