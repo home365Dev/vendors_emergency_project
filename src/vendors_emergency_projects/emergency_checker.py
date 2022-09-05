@@ -1,7 +1,7 @@
 import pandas as pd
 import src.vendors_emergency_projects.config as config
 from src.vendors_emergency_projects.logger import logger
-# import src.vendors_emergency_projects.cleaner as cleaner
+import src.vendors_emergency_projects.cleaner as cleaner
 emergency_terms = ['urgent', 'crisis', 'danger', 'disaster', 'necessity', 'catastrophe', 'catastrof', 'katastrof', 'critical', 'mergnc', 'mergenc', 'emergency', 'immediately', 'flood', 'tornado', 'hurricane', 'tsunami', 'landslide', 'earthquake', 'asap', 'ambulance', '911', 'rescue', 'burn', 'bleed', 'choke', 'attack', 'robbery', 'vandalism', 'explosion', 'bomb', 'leak', 'leaking', 'overflow', 'overflowed', 'poop', 'shit', 'piss']
 required_neg_special_terms = ['water', 'heat', 'hot', 'hat', 'het', 'hvac']
 negative_terms = ['not', 'no', 'doesnt', 'nt']
@@ -14,8 +14,7 @@ two_words_term_2 = ['possible']
 def run(df:pd.DataFrame):
     ## clean the data
     logger.info("cleaner")
-    # df = cleaner.preprocess(df)
-    df[config.TEXT_CLEAN] = df[config.TEXT]
+    df = cleaner.preprocess(df)
     df[config.IS_EMERGENCY] = "False"
     # df[config.EMERGENCY] = df[config.TFIDF_TITLE].apply(lambda str: _is_emeregency(str))
     df[config.EMERGENCY] = df[config.TEXT_CLEAN].apply(lambda str: _is_emeregency(str))
