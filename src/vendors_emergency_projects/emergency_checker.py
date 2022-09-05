@@ -1,7 +1,7 @@
 import pandas as pd
 import src.vendors_emergency_projects.config as config
 from src.vendors_emergency_projects.logger import logger
-import src.vendors_emergency_projects.cleaner as cleaner
+# import src.vendors_emergency_projects.cleaner as cleaner
 emergency_terms = ['urgent', 'crisis', 'danger', 'disaster', 'necessity', 'catastrophe', 'catastrof', 'katastrof', 'critical', 'mergnc', 'mergenc', 'emergency', 'immediately', 'flood', 'tornado', 'hurricane', 'tsunami', 'landslide', 'earthquake', 'asap', 'ambulance', '911', 'rescue', 'burn', 'bleed', 'choke', 'attack', 'robbery', 'vandalism', 'explosion', 'bomb', 'leak', 'leaking', 'overflow', 'overflowed', 'poop', 'shit', 'piss']
 required_neg_special_terms = ['water', 'heat', 'hot', 'hat', 'het', 'hvac']
 negative_terms = ['not', 'no', 'doesnt', 'nt']
