@@ -1,7 +1,7 @@
 # from obj import Constants
 import pandas as pd
 import re
-import config
+import src.vendors_emergency_projects.config as config
 import spacy
 from gensim.parsing.preprocessing import remove_stopwords
 
