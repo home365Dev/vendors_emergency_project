@@ -21,9 +21,12 @@ def execute(data: dict):
     row_df = row_df.append({config.TEXT: input_str}, ignore_index=True)
     try:
         result_df = run(row_df)
-        result_to_dict = result_df.to_dict(orient='records')
+        result_to_dict = {
+            config.EMERGENCY: result_df[config.EMERGENCY][0],
+            config.IS_EMERGENCY: result_df[config.IS_EMERGENCY][0]
+        }
+        # result_to_dict = result_df.to_dict(orient='records')
         # result_to_dict_ext = {"1": result_to_dict}
-
         # result_json_struct = json.loads(result_df.to_json(orient="records"))
         # result_to_dict_ext = {"1": result_json_struct}
         # result_json = json.dumps(result_to_dict_ext, indent=3)
