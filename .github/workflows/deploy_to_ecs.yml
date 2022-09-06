@@ -9,6 +9,7 @@ env:
   ECR_REPOSITORY: vendors_emergency_project          
   ECS_SERVICE: vendors-emer               
   ECS_CLUSTER: functional-micro-services
+  ECS_CLUSTER_DEV: functional-micro-services-dev
   ECS_TASK_DEFINITION:  deployment/task_def.json 
 
   CONTAINER_NAME: vendors-emer  
@@ -64,8 +65,17 @@ jobs:
         image: ${{ steps.build-image.outputs.image }}
 
     - name: Deploy Amazon ECS task definition
+      if: ${{ github.ref == 'refs/heads/master' }}
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: ${{ env.ECS_SERVICE }}
         cluster: ${{ env.ECS_CLUSTER }}
+
+    - name: DEV Deploy Amazon ECS task definition
+      if: ${{ github.ref == 'refs/heads/develop' }}
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      with:
+        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        service: ${{ env.ECS_SERVICE }}
+        cluster: ${{ env.ECS_CLUSTER_DEV }}
