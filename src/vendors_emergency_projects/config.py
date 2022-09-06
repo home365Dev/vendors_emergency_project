@@ -3,6 +3,7 @@ import os
 IS_EMERGENCY = 'is_emergency'
 INPUT_PATH = 'input/data.csv'
 OUTPUT_PATH = 'output/output_data.csv'
+PROJECT_ID = 'project_id'
 TEXT = 'text'
 TEXT_CLEAN = 'text_clean'
 TFIDF_TITLE = 'tfidf_value'
