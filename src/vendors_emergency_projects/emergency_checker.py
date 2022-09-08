@@ -2,6 +2,7 @@ import pandas as pd
 import src.vendors_emergency_projects.config as config
 from src.vendors_emergency_projects.logger import logger
 import src.vendors_emergency_projects.cleaner as cleaner
+import src.vendors_emergency_projects.app as app
 emergency_terms = ['urgent', 'crisis', 'danger', 'disaster', 'necessity', 'catastrophe', 'catastrof', 'katastrof', 'critical', 'mergnc', 'mergenc', 'emergency', 'immediately', 'flood', 'tornado', 'hurricane', 'tsunami', 'landslide', 'earthquake', 'asap', 'ambulance', '911', 'rescue', 'burn', 'bleed', 'choke', 'attack', 'robbery', 'vandalism', 'explosion', 'bomb', 'leak', 'leaking', 'overflow', 'overflowed', 'poop', 'shit', 'piss']
 required_neg_special_terms = ['water', 'heat', 'hot', 'hat', 'het', 'hvac']
 negative_terms = ['not', 'no', 'doesnt', 'nt']
@@ -55,6 +56,7 @@ def _is_emeregency(lemmas):
 if __name__ == '__main__':
     df = pd.DataFrame(columns=[config.TEXT])
     example_str = "all right , I m probably gon na regret order point , soon possible master bathroom , uh sort valve continually run water toilet bowl . I try I include go Home Depot try replacement um sort flush mechanism like I use . I figure constant run . so end water drain tank fill night long . its drive crazy . not urgent , certainly go , drain trigger refill . um not good house sort chronically run toilet . tub bathroom toilet bathtub machine"
+    app.execute({"text": example_str, 'project_id': 'c5c6ba50-245f-4be1-aab8-5c68dac1bb64'})
     data = pd.DataFrame({config.TEXT: [example_str]})
     df = df.append(data)
     a = run(df)
