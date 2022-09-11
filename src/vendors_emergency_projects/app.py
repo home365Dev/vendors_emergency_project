@@ -31,9 +31,14 @@ def execute(data: dict):
             "classification": emer
         }
         req = json.dumps(req1).replace("\'", "\"")
+        url = "https://app-dev.home365.co/projects-service-dev/projects/update-project?userId=495e020a-7af6-4381-a665-3c16d5ce4c1c"
+        payload = req
+        headers = {
+            'content-type': 'application/json'
+        }
+        response = requests.request("POST", url, headers=headers, data=payload)
 
         logger.info("result: {}".format(str(result_to_dict)))
-        # response = requests.request("POST", url, headers=headers, data=payload)
         return result_to_dict
     except Exception as e:
         logger.error(json.dumps({'error': str(e)}))
