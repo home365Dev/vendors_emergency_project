@@ -37,6 +37,8 @@ def execute(data: dict):
             'content-type': 'application/json'
         }
         response = requests.request("POST", url, headers=headers, data=payload)
+
+        logger.info("result: {}".format(str(result_to_dict)))
         return result_to_dict
     except Exception as e:
         logger.error(json.dumps({'error': str(e)}))
