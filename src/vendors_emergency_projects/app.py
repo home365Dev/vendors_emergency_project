@@ -1,18 +1,12 @@
-import logging
-
 import json
 import pandas as pd
 import requests
 
 from src.vendors_emergency_projects.emergency_checker import run
 import src.vendors_emergency_projects.config as config
-
-LOGGER = logging.getLogger(__name__)
+import src.vendors_emergency_projects.logger as logger
 
 def execute(data: dict):
-    LOGGER.info("Hello World")
-    logger = logging.getLogger()
-    logger.setLevel(logging.DEBUG)
     logger.info('event parameter: {}'.format(data))
     # print("Received event: " + json.dumps(event, indent=2))
     my_json_str = json.dumps(data)

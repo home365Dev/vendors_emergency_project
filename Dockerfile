@@ -4,7 +4,9 @@ ARG USER=home365
 ARG WORKDIR=/app/
 
 WORKDIR $WORKDIR
-ENV IS_TEST False
+
+ENV ENV_PREFIX Test
+# ENV ENV_PREFIX Prod
 
 RUN groupadd -f -g 1000 $USER && useradd -m $USER --gid 1000 && chown -R $USER:$USER $WORKDIR
 

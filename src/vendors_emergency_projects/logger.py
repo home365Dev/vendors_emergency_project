@@ -3,8 +3,9 @@ import logging
 from logging import *
 import src.vendors_emergency_projects.config as config
 
+name_str = '[{}]'.format(str(config.ENV_PREFIX))
 basicConfig(
-    format='%(asctime)s %(levelname)s [%(module)s.%(funcName)s:%(lineno)d] %(message)s',
+    format='{} %(asctime)s %(levelname)s [%(module)s.%(funcName)s:%(lineno)d] %(message)s'.format(name_str),
     datefmt='%H:%M:%S',
     level=INFO)
 

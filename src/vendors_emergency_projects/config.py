@@ -1,5 +1,8 @@
-import logging
 import os
+
+ENV_PREFIX = os.environ.get("ENV_PREFIX", "Test")
+IS_TEST = (ENV_PREFIX.lower() == "test")
+
 IS_EMERGENCY = 'is_emergency'
 INPUT_PATH = 'input/data.csv'
 OUTPUT_PATH = 'output/output_data.csv'
@@ -17,6 +20,4 @@ TAGGED_DATA = 'Category'
 MAX_CHARS = 50
 NUM_OF_RAWS = 500
 MATCH_SCORE_THRESHOLD = 70
-
-IS_TEST = os.environ.get("IS_TEST", "False").lower() == "true"
 

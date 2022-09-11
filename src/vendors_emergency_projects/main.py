@@ -3,12 +3,7 @@ import logging
 from fastapi import Request, FastAPI, APIRouter
 
 from src.vendors_emergency_projects.app import execute
-
-import json
-
-logger = logging.getLogger(__name__)
-logging.basicConfig()
-
+import src.vendors_emergency_projects.logger as logger
 
 router = APIRouter()
 
