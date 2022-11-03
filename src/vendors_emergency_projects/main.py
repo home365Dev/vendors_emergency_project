@@ -19,9 +19,10 @@ def healthcheck():
 @router.post("/vendors_emergency_projects")
 async def vendors_emergency_projects(request: Request):
     body = await request.json()
+    result_to_dict, project_id_str, input_str = execute(body)
     result = {
         'statusCode': 200,
-        'body': execute(body)
+        'body': result_to_dict
     }
     return result
     
