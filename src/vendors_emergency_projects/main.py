@@ -1,10 +1,10 @@
 import logging
 
 from fastapi import Request, FastAPI, APIRouter
-
+from src.db_handler import execute_to_db
 from src.vendors_emergency_projects.app import execute
 import src.vendors_emergency_projects.logger as logger
-
+import threading
 router = APIRouter()
 
 app = FastAPI(
@@ -24,6 +24,9 @@ async def vendors_emergency_projects(request: Request):
         'statusCode': 200,
         'body': result_to_dict
     }
+    thread = threading.Thread(target=execute_to_db, kwargs={
+        'res_to_dict': result_to_dict, 'id': project_id_str, 'text_of_case': input_str})
+    thread.start()
     return result
     
 app.include_router(router, prefix="/vendors_emergency_projects")
