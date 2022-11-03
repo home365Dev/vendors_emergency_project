@@ -29,7 +29,7 @@ def _convert_to_lemma(text):
 def _preprocess_over_text(text_title):
     fixed_text = _do_pattern_replace(text_title)
     fixed_text = _remove_special_chars(fixed_text)
-    fixed_text = _remove_stop_words(fixed_text)
+    # fixed_text = _remove_stop_words(fixed_text)
     fixed_text = _convert_to_lemma(fixed_text)
     return fixed_text
 
