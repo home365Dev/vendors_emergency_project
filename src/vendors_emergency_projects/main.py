@@ -1,7 +1,7 @@
 import logging
 
 from fastapi import Request, FastAPI, APIRouter
-from src.db_handler import execute_to_db
+from src.vendors_emergency_projects.db_handler import execute_to_db
 from src.vendors_emergency_projects.app import execute
 import src.vendors_emergency_projects.logger as logger
 import threading
