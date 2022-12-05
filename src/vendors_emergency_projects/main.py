@@ -35,7 +35,7 @@ logger.info("Starting up")
 
 
 if __name__ == '__main__':
-    body = { "text": "all right , I m probably gon na regret order point , soon possible master bathroom , uh sort valve continually run water toilet bowl . I try I include go Home Depot try replacement um sort flush mechanism like I use . I figure constant run . so end water drain tank fill night long . its drive crazy . not urgent , certainly go , drain trigger refill . um not good house sort chronically run toilet . tub bathroom toilet bathtub machine", 'project_id': 'c5c6ba50-245f-4be1-aab8-5c68dac1bb64'}
+    body = { "text": "**** all right , I m probably gon na regret order point , soon possible master bathroom , uh sort valve continually run water toilet bowl . I try I include go Home Depot try replacement um sort flush mechanism like I use . I figure constant run . so end water drain tank fill night long . its drive crazy . not urgent , certainly go , drain trigger refill . um not good house sort chronically run toilet . tub bathroom toilet bathtub machine", 'project_id': 'c5c6ba50-245f-4be1-aab8-5c68dac1bb64'}
     result_to_dict, project_id_str, input_str = execute(body)
     result = {
         'statusCode': 200,
