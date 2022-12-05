@@ -3,12 +3,14 @@ import src.vendors_emergency_projects.config as config
 from src.vendors_emergency_projects.logger import logger
 import src.vendors_emergency_projects.cleaner as cleaner
 import src.vendors_emergency_projects.app as app
-emergency_terms = ['urgent', 'crisis', 'danger', 'disaster', 'necessity', 'catastrophe', 'catastrof', 'katastrof', 'critical', 'mergnc', 'mergenc', 'emergency', 'immediately', 'flood', 'tornado', 'hurricane', 'tsunami', 'landslide', 'earthquake', 'asap', 'ambulance', '911', 'rescue', 'burn', 'bleed', 'choke', 'attack', 'robbery', 'vandalism', 'explosion', 'bomb', 'leak', 'leaking', 'overflow', 'overflowed', 'poop', 'shit', 'piss']
-required_neg_special_terms = ['water', 'heat', 'hot', 'hat', 'het', 'hvac']
-negative_terms = ['not', 'no', 'doesnt', 'nt']
+from src.vendors_emergency_projects.terms import emergency_terms, required_neg_special_terms
 
+negative_terms = ['not', 'no', 'doesnt', 'nt']
 two_words_term_1 = ['soon']
 two_words_term_2 = ['possible']
+
+emer_terms = emergency_terms.terms
+req_neg_special_terms = required_neg_special_terms.terms
 
 ## police is no good, since it is converted from the spoken word of "please"
 
@@ -23,16 +25,20 @@ def run(df:pd.DataFrame):
     return df
 
 def _is_emeregency(lemmas):
+    global emer_terms
+    global req_neg_special_terms
+    global negative_terms
     logger.debug("running over: " + lemmas)
 
     lem_split = lemmas.split(' ')
-    for term in emergency_terms:
+    for term in emer_terms:
         if term in lem_split:
             if (lem_split.index(term) - 1 >=0 and lem_split[lem_split.index(term) - 1] not in negative_terms) and \
                     (lem_split.index(term) - 2 >=0 and lem_split[lem_split.index(term) - 2] not in negative_terms):
                 logger.debug("result: " + term)
                 return term
-    for term in required_neg_special_terms:
+
+    for term in req_neg_special_terms:
         if term in lem_split:
             if (lem_split.index(term) - 1 >=0 and lem_split[lem_split.index(term) - 1] in negative_terms) or \
                     (lem_split.index(term) - 2 >= 0 and lem_split[lem_split.index(term) - 2] in negative_terms) or \
@@ -43,6 +49,7 @@ def _is_emeregency(lemmas):
                     (lem_split.index(term) + 2 < len(lem_split) and lem_split[lem_split.index(term) + 2] in negative_terms):
                 logger.debug("result: no " + term)
                 return 'no '+term
+
     for term1 in two_words_term_1:
         if term1 in lem_split:
             if lem_split.index(term1) + 1 < len(lem_split) and lem_split[lem_split.index(term1)+ 1] in two_words_term_2:
