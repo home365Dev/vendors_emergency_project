@@ -3,7 +3,6 @@ name: Deploy vendors_emergency_projects  to AWS ECS
 on:
   push:
 
-
 env:
   AWS_REGION: us-east-1             
   ECR_REPOSITORY: vendors_emergency_project          
